@@ -7,17 +7,19 @@ export default function NewPage(){
     //const [test, setTest] = useState('');
 
     const [ingredientList, setIngredientList] = useState([]);
+    const [currentIngredient, setCurrentIngredient] = useState("");
 
     const getIngredientList = () => {
         return ingredientList;
     };
 
-    const addIngredient = function(ingredient){
-        ingredientList.append(ingredient)
-    };
+    const handleSubmit = (event) => {
+        //prevent reload
+        event.preventDefault();
 
-    const handleSubmit = () => {
-        console.log(getIngredientList);
+        //change state
+        setIngredientList([...getIngredientList(), currentIngredient]);
+        setCurrentIngredient("")
     };
 
     const buttonStyle = {
@@ -34,7 +36,7 @@ export default function NewPage(){
             <label>Ingredient 1:
                 <input
                     type="text"
-                    onChange={(e) => setIngredientList(ingredientList => [...getIngredientList(), e.target.value])}
+                    onChange={(e) => setCurrentIngredient(e.target.value)}
                     style={{border: "1px solid grey"}}
                 ></input>
             </label> <br/>
