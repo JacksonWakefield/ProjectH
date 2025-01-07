@@ -15,7 +15,7 @@ app.config['MYSQL_DB'] = "ProjectH"
 
 mysql = MySQL(app)
 
-@app.route('/api/data', methods=['GET'])
+@app.route('/api/data/get', methods=['GET'])
 def get_data():
     with app.app_context():
         cursor = mysql.connection.cursor()
@@ -23,19 +23,15 @@ def get_data():
         results = cursor.fetchall()
         return jsonify(results)
 
+@app.route('/api/data/post', methods=['GET', 'POST'])
+def post_data():
+    with app.app_context():
+        request_data = json.loads(request.data)
+
+        cursor = mysql.connection.cursor()
+        cursor.execute(f'INSERT INTO Ingredients (Ingredient, Recipe) VALUES ({request_data['Ingredient']},{request_data['Recipe']})')
+        results = cursor.fetchall()
+        return jsonify(results)
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-URL = "http://127.0.0.1:5000/api/data"
-
-try:
-    response = requests.get(URL)
-    if response.status_code == 200:
-        print("Success! Here's the data:")
-        print(response.json())  # Assuming your API returns JSON
-    else:
-        print(f"Failed with status code: {response.status_code}")
-        print(response.text)  # Print the error message
-except Exception as e:
-    print(f"Error occurred: {e}")
