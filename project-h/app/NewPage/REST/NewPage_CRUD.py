@@ -26,12 +26,19 @@ def get_data():
 @app.route('/api/data/post', methods=['GET', 'POST'])
 def post_data():
     with app.app_context():
-        request_data = json.loads(request.data)
+        try:
+            request_data = json.loads(request.data)
 
-        cursor = mysql.connection.cursor()
-        cursor.execute(f'INSERT INTO Ingredients (Ingredient, Recipe) VALUES ({request_data['Ingredient']},{request_data['Recipe']})')
-        results = cursor.fetchall()
-        return jsonify(results)
+            rows = [(row['Ingredient'], row['Recipe']) for row in request_data];
+
+            cursor = mysql.connection.cursor()
+            cursor.executemany(f'INSERT INTO Ingredients (Ingredient, Recipe) VALUES (%s, %s)', rows)
+            mysql.connection.commit()
+            cursor.close()
+            return jsonify({"SUCCESS": "Successfully inserted data"})
+        except Exception as e:
+            app.logger.error(f"Error: {str(e)}")
+            return jsonify({"Error": str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True)
