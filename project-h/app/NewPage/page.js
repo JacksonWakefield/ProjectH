@@ -32,7 +32,6 @@ export default function NewPage(){
         fetch("http://localhost:5000/api/data/get")
             .then((response) => response.json())
             .then((data) => {
-
                 setAllRecipes(serializeData(data));
                 console.log("Data:");
                 console.log(data);

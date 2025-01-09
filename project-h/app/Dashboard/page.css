@@ -1,3 +1,19 @@
-.dashboard-icon{
-    
+.dashboard-wrapper{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dashboard-outline{
+    display: inline-block;
+    margin:15% 15%;
+
+
+    border: solid 8px black;
+    border-width: 2px;
+
+
+    width: 20%;
+    height: 20%;
+    background-color:red;
 }
