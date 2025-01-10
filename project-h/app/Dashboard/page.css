@@ -1,19 +1,21 @@
 .dashboard-wrapper{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    margin: 0;
+    gap:15%;
 }
 
+
+/*used for the component in /components/page/Dasboard/DashboardCard*/
 .dashboard-outline{
-    display: inline-block;
-    margin:15% 15%;
-
-
+    flex: 0 0 calc(25%);
+    height: calc(25%);
     border: solid 8px black;
     border-width: 2px;
 
-
-    width: 20%;
-    height: 20%;
     background-color:red;
 }
