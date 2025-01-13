@@ -3,19 +3,30 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: 40vh;
-    margin: 0;
-    gap:15%;
+    width: auto;
+    height: 70vh;
+    margin:auto;
+    gap:0% 15%;
+
+
 }
 
 
 /*used for the component in /components/page/Dasboard/DashboardCard*/
-.dashboard-outline{
-    flex: 0 0 calc(25%);
-    height: calc(25%);
-    border: solid 8px black;
-    border-width: 2px;
+.dashboard-card-outline{
+    flex: 0 0 calc(35%);
+    height: calc(35%);
 
-    background-color:red;
+    border: solid 8px black;
+    border-width: 1px;
+    border-radius: 12px;
+    border-color: #919090a0;
+
+    background-color:#3c85c547;
+}
+
+.dashboard-card-text{
+    font-family: 'Courier New', Courier, monospace;
+
+    color: white;
 }

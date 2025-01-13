@@ -1,12 +1,11 @@
+import Link from "next/link"
 
-
-export default function DashboardCard(){
-    
-
-
+export default function DashboardCard(props){
     return (
-        <div className="dashboard-outline">
-            
-        </div>
+        <Link className="dashboard-card-outline" href={`${props.href}`}>
+            <p className="dashboard-card-text">
+                {props.text}
+            </p>
+        </Link>
     )
 }

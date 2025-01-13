@@ -1,0 +1,19 @@
+.banner-wrapper{
+    display: flex;
+    margin: auto;
+
+    width: auto;
+    height: 20vh;
+
+    border-width: 1px;
+    border-color: #919090a0;
+}
+
+.project-h-logo{
+
+    margin: auto;
+
+
+    font-family:'Courier New', Courier, monospace;
+    font-size: xx-large;
+}
